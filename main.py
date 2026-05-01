@@ -12,7 +12,7 @@ app.add_middleware(
 
 @app.get("/")
 def root():
-    return {"greeting": "Hello, World!", "message": "Welcome to FastAPI!"}
+    return {"greeting": "Hello, World!"}
 
 @app.get("/jobs")
 def get_jobs():
@@ -20,12 +20,7 @@ def get_jobs():
 
 @app.get("/status")
 def get_status():
-    return {
-        "last_run": None,
-        "jobs_found": 0,
-        "companies_searched": 0,
-        "jobs_updated": 0
-    }
+    return {"last_run": None, "jobs_found": 0, "companies_searched": 0, "jobs_updated": 0}
 
 @app.post("/run")
 def run_scraper():
