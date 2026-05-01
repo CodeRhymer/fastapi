@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -12,7 +13,7 @@ app.add_middleware(
 
 @app.get("/")
 def root():
-    return {"greeting": "Hello, World!"}
+    return {"status": "ok"}
 
 @app.get("/jobs")
 def get_jobs():
@@ -49,3 +50,8 @@ def add_keyword(body: dict):
 @app.delete("/keywords/{id}")
 def delete_keyword(id: int):
     return {"deleted": id}
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
